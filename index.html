@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body style="background-color:lightgrey">
+    <nav class="navbar navbar-light" style="background-color:#007bff;">
+      <span class="navbar-brand mb-0 h1" style="color:#fff;" >Asdf Language</span>
+    </nav>
+
+    <div class="jumbotron">
+            <h1 class="display-4">Hello, world!</h1>
+            <p class="lead">This is Programming language called Asdf.</p>
+            <hr class="my-4">
+            <p>It uses the exactly syntax as normal javascript so feel at home =).</p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+          </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col mg-10">
+          <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h1 class="display-4">Input</h1>
+              <form>
+                <div class="form-group">                  
+                  <textarea
+                    class="form-control"
+                    id="exampleFormControlTextarea1"
+                    rows="3"
+                  ></textarea>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h1 class="display-4">Output</h1>
+              <form>
+                    <div class="form-group">                  
+                      <textarea
+                        class="form-control"
+                        id="exampleFormControlTextarea1"
+                        rows="3"
+                      ></textarea>
+                    </div>
+                  </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin: 20px;">
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="run()">Run</button>
+      </div>
+
+      <div class="row">
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1 class="display-4">AST - Tree</h1>
+            <textarea 
+                class="form-control"
+                id="result"
+                rows="20"
+                cols="150"
+                readonly
+          ></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./parser.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+    function run(){
+        var text = document.querySelector("#exampleFormControlTextarea1").value
+
+        console.log(text)
+        var result = PARSER.parse(text);
+        //document.querySelector("#result").innerHTML = JSON.stringify(result, null ,'\t')
+
+        var pretty = JSON.stringify(result, undefined, 4);
+        console.log(pretty)
+        document.querySelector('#result').value = pretty;
+    }
+
+
+      
+
+
+      console.log("result", result);
+    </script>
+  </body>
+</html>
